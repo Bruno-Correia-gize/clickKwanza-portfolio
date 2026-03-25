@@ -46,17 +46,36 @@ const { Content } = await post.render();
 			</div>
 		)}
 
+		<!-- Adsense: Top of Article -->
+		<div class="max-w-[65ch] mx-auto mb-16 py-8 border-y border-[var(--border)] flex flex-col items-center justify-center bg-black/5">
+			<span class="font-mono text-[0.6rem] tracking-widest uppercase opacity-30 mb-2">Publicidade · Google Adsense</span>
+			<div class="w-full h-[100px] flex items-center justify-center italic text-[0.8rem] opacity-40">
+				Insere o teu código Adsense (Horizontal) aqui
+			</div>
+		</div>
+
 		<div class="prose prose-premium mx-auto">
 			<Content />
 		</div>
 
+		<!-- Adsense: Bottom of Article -->
+		<div class="max-w-[65ch] mx-auto mt-16 py-8 border-y border-[var(--border)] flex flex-col items-center justify-center bg-black/5">
+			<span class="font-mono text-[0.6rem] tracking-widest uppercase opacity-30 mb-2">Publicidade · Google Adsense</span>
+			<div class="w-full h-[250px] flex items-center justify-center italic text-[0.8rem] opacity-40">
+				Insere o teu código Adsense (Display/Rectangular) aqui
+			</div>
+		</div>
+
 		<footer class="max-w-[65ch] mx-auto mt-20 pt-12 border-t border-[var(--border)]">
-			<div class="bg-[var(--ink)] text-[var(--paper)] p-8 md:p-12">
-				<h3 class="font-serif text-[1.5rem] font-bold mb-4 italic">Interessado em escalar o seu ecossistema digital?</h3>
-				<p class="text-[0.9rem] leading-[1.7] opacity-60 mb-8">Especialista em Django e Flutter, foco em arquitecturas de alta disponibilidade para mercados africanos.</p>
-				<a href="/#contacto" class="font-mono text-[0.72rem] tracking-[0.12em] uppercase bg-[var(--accent)] text-[var(--ink)] px-6 py-3 no-underline inline-block hover:bg-[var(--paper)] transition-all duration-300">
-					Solicitar Consultoria
-				</a>
+			<div class="bg-[var(--ink)] text-[var(--paper)] p-8 md:p-12 flex flex-col md:flex-row gap-8 items-start">
+				<img src="/fotoPerfil.png" alt="Bruno Correia" class="w-24 h-24 object-cover border border-[var(--border)] grayscale" />
+				<div>
+					<h3 class="font-serif text-[1.5rem] font-bold mb-4 italic">Interessado em escalar o seu ecossistema digital?</h3>
+					<p class="text-[0.9rem] leading-[1.7] opacity-60 mb-8">Especialista em Django e Flutter, foco em arquitecturas de alta disponibilidade para mercados africanos.</p>
+					<a href="/#contacto" class="font-mono text-[0.72rem] tracking-[0.12em] uppercase bg-[var(--accent)] text-[var(--ink)] px-6 py-3 no-underline inline-block hover:bg-[var(--paper)] transition-all duration-300">
+						Solicitar Consultoria
+					</a>
+				</div>
 			</div>
 		</footer>
 	</article>

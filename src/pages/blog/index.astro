@@ -15,6 +15,14 @@ const posts = (await getCollection('blog')).sort(
 			</p>
 			<h1 class="font-serif text-[3.5rem] font-bold mb-16 leading-tight">Notas sobre<br/>Engenharia &amp;<br/><em class="italic text-[var(--accent2)]">Arquitectura</em></h1>
 			
+			<!-- Adsense: Index Top -->
+			<div class="w-full mb-16 py-6 border-y border-[var(--border)] flex flex-col items-center justify-center bg-black/5">
+				<span class="font-mono text-[0.6rem] tracking-widest uppercase opacity-30 mb-2">Publicidade · Google Adsense</span>
+				<div class="h-[90px] w-full flex items-center justify-center italic text-[0.8rem] opacity-40 text-center">
+					Espaço reservado para o teu anúncio Adsense aqui
+				</div>
+			</div>
+			
 			<div class="space-y-20">
 				{posts.map((post) => (
 					<article class="group fade-up">

@@ -161,6 +161,8 @@ const jsonLd = {
 			<a href="/" class="font-mono text-[0.78rem] tracking-[0.15em] uppercase text-[var(--ink)] no-underline">
 				Bruno · Dev
 			</a>
+			
+			<!-- Desktop Menu -->
 			<ul class="hidden md:flex gap-10 list-none">
 				<li><a href="/#servicos" class="font-mono text-[0.72rem] tracking-[0.1em] uppercase text-[var(--muted)] no-underline hover:text-[var(--ink)] transition-colors">Serviços</a></li>
 				<li><a href="/#projectos" class="font-mono text-[0.72rem] tracking-[0.1em] uppercase text-[var(--muted)] no-underline hover:text-[var(--ink)] transition-colors">Projectos</a></li>
@@ -168,6 +170,25 @@ const jsonLd = {
 				<li><a href="/#contacto" class="font-mono text-[0.72rem] tracking-[0.1em] uppercase text-[var(--muted)] no-underline hover:text-[var(--ink)] transition-colors">Contacto</a></li>
 				<li><a href="/blog" class="font-mono text-[0.72rem] tracking-[0.1em] uppercase text-[var(--muted)] no-underline hover:text-[var(--ink)] transition-colors">Blog</a></li>
 			</ul>
+
+			<!-- Mobile Menu Button -->
+			<button id="menu-toggle" class="md:hidden flex flex-col gap-1.5 z-[110] relative focus:outline-none" aria-label="Menu">
+				<span class="line-1 w-6 h-[1.5px] bg-[var(--ink)] transition-all duration-300"></span>
+				<span class="line-2 w-6 h-[1.5px] bg-[var(--ink)] transition-all duration-300"></span>
+				<span class="line-3 w-4 h-[1.5px] bg-[var(--ink)] transition-all duration-300 ml-auto"></span>
+			</button>
+
+			<!-- Mobile Menu Overlay -->
+			<div id="mobile-menu" class="fixed inset-0 bg-[var(--paper)] z-[105] flex flex-col items-center justify-center translate-x-full transition-transform duration-500 ease-in-out md:hidden">
+				<ul class="flex flex-col gap-8 text-center list-none p-0">
+					<li><a href="/#servicos" class="mobile-link font-serif text-[2rem] font-bold text-[var(--ink)] no-underline">Serviços</a></li>
+					<li><a href="/#projectos" class="mobile-link font-serif text-[2rem] font-bold text-[var(--ink)] no-underline">Projectos</a></li>
+					<li><a href="/#sobre" class="mobile-link font-serif text-[2rem] font-bold text-[var(--ink)] no-underline">Sobre</a></li>
+					<li><a href="/#contacto" class="mobile-link font-serif text-[2rem] font-bold text-[var(--ink)] no-underline">Contacto</a></li>
+					<li><a href="/blog" class="mobile-link font-serif text-[2rem] font-bold text-[var(--ink)] no-underline">Blog</a></li>
+				</ul>
+				<div class="mt-20 font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--muted)]">Huambo · Angola</div>
+			</div>
 		</nav>
 
 		<slot />
@@ -182,42 +203,88 @@ const jsonLd = {
 		</footer>
 
 		<script>
-			// Navbar scroll effect
-			const navbar = document.getElementById('navbar');
-			window.addEventListener('scroll', () => {
-				if (navbar) {
-					navbar.classList.toggle('bg-[rgba(244,240,232,0.92)]', window.scrollY > 40);
-					navbar.classList.toggle('backdrop-blur-md', window.scrollY > 40);
-					navbar.classList.toggle('border-[var(--border)]', window.scrollY > 40);
-					navbar.classList.toggle('py-4', window.scrollY > 40);
+			let scrollHandler;
+
+			function initApp() {
+				const navbar = document.getElementById('navbar');
+				
+				// Clean up previous listener
+				if (scrollHandler) {
+					window.removeEventListener('scroll', scrollHandler);
 				}
-			});
 
-			// Scroll-triggered fade-in
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach((entry, i) => {
-					if (entry.isIntersecting) {
-						setTimeout(() => entry.target.classList.add('visible'), i * 80);
-						observer.unobserve(entry.target);
+				scrollHandler = () => {
+					if (navbar) {
+						navbar.classList.toggle('bg-[rgba(244,240,232,0.92)]', window.scrollY > 40);
+						navbar.classList.toggle('backdrop-blur-md', window.scrollY > 40);
+						navbar.classList.toggle('border-[var(--border)]', window.scrollY > 40);
+						navbar.classList.toggle('py-4', window.scrollY > 40);
 					}
-				});
-			}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+				};
 
-			document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+				window.addEventListener('scroll', scrollHandler);
+				scrollHandler(); // Initial check
 
-			// Smooth anchor scroll
-			document.querySelectorAll('a[href^="#"]').forEach(a => {
-				a.addEventListener('click', e => {
-					const href = a.getAttribute('href');
-					if (href && href.startsWith('#')) {
-						const target = document.querySelector(href);
-						if (target) {
-							e.preventDefault();
-							target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				// Mobile Menu Logic
+				const menuToggle = document.getElementById('menu-toggle');
+				const mobileMenu = document.getElementById('mobile-menu');
+				const mobileLinks = document.querySelectorAll('.mobile-link');
+				const body = document.body;
+
+				const toggleMenu = () => {
+					const isOpen = mobileMenu?.classList.contains('translate-x-0');
+					mobileMenu?.classList.toggle('translate-x-full', isOpen);
+					mobileMenu?.classList.toggle('translate-x-0', !isOpen);
+					body.classList.toggle('overflow-hidden', !isOpen);
+					
+					// Animate hamburger
+					const spans = menuToggle?.querySelectorAll('span');
+					if (spans) {
+						if (!isOpen) {
+							spans[0].style.transform = 'translateY(7.5px) rotate(45deg)';
+							spans[1].style.opacity = '0';
+							spans[2].style.transform = 'translateY(-7.5px) rotate(-45deg)';
+							spans[2].style.width = '1.5rem';
+						} else {
+							spans[0].style.transform = 'none';
+							spans[1].style.opacity = '1';
+							spans[2].style.transform = 'none';
+							spans[2].style.width = '1rem';
 						}
 					}
+				};
+
+				menuToggle?.addEventListener('click', toggleMenu);
+				mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+				// Scroll-triggered fade-in
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach((entry, i) => {
+						if (entry.isIntersecting) {
+							setTimeout(() => entry.target.classList.add('visible'), i * 80);
+							observer.unobserve(entry.target);
+						}
+					});
+				}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+				document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+				// Smooth anchor scroll
+				document.querySelectorAll('a[href^="#"]').forEach(a => {
+					a.addEventListener('click', e => {
+						const href = a.getAttribute('href');
+						if (href && href.startsWith('#')) {
+							const target = document.querySelector(href);
+							if (target) {
+								e.preventDefault();
+								target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+							}
+						}
+					});
 				});
-			});
+			}
+
+			document.addEventListener('astro:page-load', initApp);
 		</script>
 		<WhatsAppCTA />
 	</body>

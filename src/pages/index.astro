@@ -81,9 +81,12 @@ const projects = [
 				</a>
 			</div>
 			<div class="hero-right flex flex-col justify-between p-6 md:p-12 pt-12 md:pt-12 relative">
-				<div class="hero-location font-mono text-[0.65rem] tracking-[0.12em] uppercase text-[var(--muted)] flex items-center gap-2">
-					<span class="location-dot w-[6px] h-[6px] bg-[var(--accent2)] rounded-full animate-pulse"></span>
-					Huambo, Angola · Disponível Remotamente
+				<div class="hero-location font-mono text-[0.65rem] tracking-[0.12em] uppercase text-[var(--muted)] flex items-center gap-3">
+					<img src="/fotoPerfil.png" alt="Bruno Correia" class="w-10 h-10 rounded-full border border-[var(--border)] grayscale hover:grayscale-0 transition-all duration-500 shadow-xl" />
+					<div class="flex flex-col">
+						<span class="location-dot w-[6px] h-[6px] bg-[var(--accent2)] rounded-full animate-pulse inline-block mr-1"></span>
+						Huambo, Angola · Disponível Remotamente
+					</div>
 				</div>
 				<div class="hero-number hidden md:block font-serif text-[clamp(7rem,14vw,13rem)] font-black text-transparent stroke-text leading-none absolute top-20 right-8 select-none pointer-events-none">
 					03
@@ -144,9 +147,11 @@ const projects = [
 
 		<!-- ABOUT -->
 		<section id="sobre" class="py-28 px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-24 items-center border-b border-[var(--border)]">
-			<div class="about-visual relative h-[480px]">
-				<div class="about-card-main absolute inset-0 bg-[var(--ink)] text-[var(--paper)] p-10 flex flex-col justify-between">
-					<div class="about-initials font-serif text-[5rem] font-black leading-none text-[var(--accent)]">B.</div>
+			<div class="about-visual relative h-[520px]">
+				<div class="about-card-main absolute inset-0 bg-[var(--ink)] text-[var(--paper)] overflow-hidden group">
+					<img src="/fotoPerfil.png" alt="Bruno Correia" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105 opacity-60" />
+					<div class="absolute bottom-10 left-10 z-10 transition-transform duration-500 group-hover:-translate-y-2">
+						<div class="about-initials font-serif text-[4rem] font-black leading-none text-[var(--accent)] mb-2">B.</div>
 					<div>
 						<div class="about-role font-mono text-[0.65rem] tracking-[0.15em] uppercase opacity-50">Software Engineer</div>
 						<div class="font-sans text-[0.85rem] opacity-50 mt-1">Huambo · Angola</div>

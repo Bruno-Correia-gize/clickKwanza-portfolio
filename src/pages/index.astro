@@ -146,46 +146,64 @@ const projects = [
 		</section>
 
 		<!-- ABOUT -->
-		<section id="sobre" class="py-28 px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-24 items-center border-b border-[var(--border)]">
-			<div class="about-visual relative h-[520px]">
-				<div class="about-card-main absolute inset-0 bg-[var(--ink)] text-[var(--paper)] overflow-hidden group">
-					<img src="/fotoPerfil.png" alt="Bruno Correia" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105 opacity-60" />
-					<div class="absolute bottom-10 left-10 z-10 transition-transform duration-500 group-hover:-translate-y-2">
-						<div class="about-initials font-serif text-[4rem] font-black leading-none text-[var(--accent)] mb-2">B.</div>
-					<div>
-						<div class="about-role font-mono text-[0.65rem] tracking-[0.15em] uppercase opacity-50">Software Engineer</div>
-						<div class="font-sans text-[0.85rem] opacity-50 mt-1">Huambo · Angola</div>
+		<!-- ABOUT (EDITORIAL VERSION) -->
+		<section id="sobre" class="flex flex-col bg-[var(--paper)] border-b border-[var(--border)] relative overflow-hidden">
+			<!-- Visual Header -->
+			<div class="w-full h-[65vh] overflow-hidden relative">
+				<img src="/fotoPerfil.png" alt="Bruno Correia - Software Engineer" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
+				<div class="absolute inset-0 bg-gradient-to-t from-[var(--paper)] via-transparent to-transparent opacity-80"></div>
+			</div>
+
+			<!-- Content Overlap Card -->
+			<div class="max-w-6xl mx-auto px-6 md:px-12 -mt-32 relative z-10 pb-28">
+				<div class="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-12 md:gap-24 items-start">
+					<!-- Left: Description -->
+					<div class="bg-[var(--paper)] p-8 md:p-20 shadow-[0_40px_100px_rgba(0,0,0,0.06)] border border-[var(--border)] fade-up">
+						<div class="bg-[var(--accent2)] text-[var(--paper)] px-6 py-4 mb-12 inline-block">
+							<p class="font-mono text-[0.6rem] tracking-[0.2em] uppercase opacity-70 mb-1">Especialidade</p>
+							<h3 class="font-serif text-[1.6rem] font-bold">SaaS & Plataformas B2B</h3>
+						</div>
+						
+						<h2 class="font-serif text-[clamp(2.2rem,4vw,3.5rem)] font-bold leading-[1.1] mb-10 text-[var(--ink)]">
+							Engenheiro de Software com<br/><em class="italic text-[var(--accent)] font-normal">Formação em Economia</em>
+						</h2>
+						
+						<div class="space-y-6 text-[1.05rem] leading-[1.85] text-[var(--muted)]">
+							<p>
+								Estudante de Economia na U.J.E.S (Huambo) — o que me separa da maioria dos 
+								programadores é que entendo o lado do negócio. Não construo apenas código; 
+								construo sistemas que reduzem custos, automatizam tarefas repetitivas e geram retorno real.
+							</p>
+							<p>
+								Actualmente a liderar o desenvolvimento do PharmaScan — a primeira plataforma multi-tenant para farmácias angolanas. A digitalização permite um salto de produtividade de até 25% nas PMEs. Eu resolvo isso.
+							</p>
+						</div>
+
+						<div class="mt-14 flex flex-wrap gap-2">
+							{["Django REST", "Flutter", "PostgreSQL", "Astro", "Python", "SEO Técnico"].map((skill) => (
+								<span class="skill-pill font-mono text-[0.6rem] tracking-[0.05em] uppercase border border-[var(--border)] px-4 py-2 transition-all duration-300 hover:bg-[var(--ink)] hover:text-[var(--paper)]">
+									{skill}
+								</span>
+							))}
+						</div>
+					</div>
+
+					<!-- Right: Branding/CTA -->
+					<div class="lg:pt-24 fade-up">
+						<div class="about-initials font-serif text-[12rem] font-black leading-none text-[rgba(200,169,110,0.12)] mb-8 select-none">
+							B.
+						</div>
+						<p class="font-sans text-[0.98rem] leading-[1.7] text-[var(--muted)] mb-12 max-w-[32ch]">
+							Baseado em Huambo, disponível para projectos em toda Angola e para clientes internacionais que buscam eficiência operacional e arquitectura robusta.
+						</p>
+						<a href="#contacto" class="hero-cta inline-flex items-center gap-4 bg-[var(--ink)] text-[var(--paper)] font-mono text-[0.72rem] tracking-[0.12em] uppercase px-10 py-5 no-underline border border-[var(--ink)] transition-all duration-300 hover:bg-transparent hover:text-[var(--ink)] w-fit group shadow-xl">
+							Iniciar Projecto
+							<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="transition-transform duration-300 group-hover:translate-x-1">
+								<path d="M5 12h14M12 5l7 7-7 7"/>
+							</svg>
+						</a>
 					</div>
 				</div>
-				<div class="about-card-float absolute w-[55%] bottom-[-2rem] right-[-2rem] bg-[var(--accent2)] text-[var(--paper)] p-10 z-[2]">
-					<div class="float-label font-mono text-[0.65rem] tracking-[0.12em] uppercase opacity-70 mb-2">Especialidade</div>
-					<div class="float-value font-serif text-[1.8rem] font-bold">SaaS &amp; Plataformas B2B</div>
-				</div>
-			</div>
-			<div class="about-content fade-up">
-				<p class="section-label font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--accent)] mb-12 flex items-center gap-4 after:content-[''] after:flex-1 after:h-[1px] after:bg-[var(--border)] after:max-w-[6rem]">
-					Sobre
-				</p>
-				<h2 class="about-heading font-serif text-[clamp(2rem,3vw,3rem)] font-bold leading-[1.15] mb-6">Engenheiro de Software com<br/>Formação em Economia</h2>
-				<p class="about-text text-[0.95rem] leading-[1.85] text-[var(--muted)] mb-8">
-					Estudante de Economia na U.J.E.S (Huambo) — o que me separa da maioria dos programadores é que entendo o lado do negócio. Não construo apenas código; construo sistemas que reduzem custos, automatizam tarefas repetitivas e geram retorno real.
-				</p>
-				<p class="about-text text-[0.95rem] leading-[1.85] text-[var(--muted)] mb-10">
-					Actualmente a liderar o desenvolvimento do PharmaScan — a primeira plataforma multi-tenant para farmácias angolanas. Sabias que a digitalização pode permitir um salto de produtividade de até 25% nas PMEs? Eu resolvo isso.
-				</p>
-				<div class="about-skills flex flex-wrap gap-2 mb-10">
-					{["Django REST", "Flutter", "PostgreSQL", "Astro", "Python", "Tailwind CSS", "Git / GitHub", "SEO Técnico"].map((skill) => (
-						<span class="skill-pill font-mono text-[0.65rem] tracking-[0.08em] uppercase border border-[var(--border)] px-[0.9rem] py-[0.4rem] transition-all duration-200 hover:bg-[var(--ink)] hover:text-[var(--paper)] hover:border-[var(--ink)]">
-							{skill}
-						</span>
-					))}
-				</div>
-				<a href="#contacto" class="hero-cta inline-flex items-center gap-4 bg-[var(--ink)] text-[var(--paper)] font-mono text-[0.72rem] tracking-[0.12em] uppercase px-8 py-4 no-underline border border-[var(--ink)] transition-all duration-300 hover:bg-transparent hover:text-[var(--ink)] w-fit group">
-					Vamos Trabalhar Juntos
-					<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="transition-transform duration-300 group-hover:translate-x-1">
-						<path d="M5 12h14M12 5l7 7-7 7"/>
-					</svg>
-				</a>
 			</div>
 		</section>
 

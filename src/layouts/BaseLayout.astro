@@ -8,6 +8,7 @@ const { title, description = "Engenheiro de Software & Consultor de Eficiência 
 
 import { ViewTransitions } from 'astro:transitions';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import Analytics from '@vercel/analytics/astro';
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -296,6 +297,7 @@ const jsonLd = {
 			document.addEventListener('astro:page-load', initApp);
 		</script>
 		<WhatsAppCTA />
+		<Analytics />
 	</body>
 </html>
 

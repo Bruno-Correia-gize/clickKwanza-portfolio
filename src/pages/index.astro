@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Marquee from '../components/Marquee.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ProjectRow from '../components/ProjectRow.astro';
+
+const techStack = [
+	"Django", "Flutter", "Python", "Astro", "PostgreSQL", 
+	"REST API", "Multi-Tenant SaaS", "Mobile-First", "SEO Técnico"
+];
+
+const services = [
+	{
+		number: "01",
+		name: "Sistemas de Gestão para Empresas",
+		description: "Chega de Excel e processos manuais. Desenvolvo software à medida para gerir o teu negócio — stocks, vendas, colaboradores, relatórios — num único sistema que tu controlas.",
+		tags: ["Gestão de Stocks", "Relatórios", "ERP"],
+		href: "/servicos/sistemas-de-gestao"
+	},
+	{
+		number: "02",
+		name: "Aplicações Mobile para o Mercado Angolano",
+		description: "Apps Android e iOS desenhadas para funcionar com internet fraca ou sem internet. O teu cliente usa o telemóvel — o teu negócio também devia estar lá.",
+		tags: ["Offline-First", "Android/iOS", "Flutter"],
+		href: "/servicos/apps-mobile"
+	},
+	{
+		number: "03",
+		name: "Sites e Lojas Online que Aparecem no Google",
+		description: "Presença digital que gera clientes reais. Sites rápidos, optimizados para aparecer quando alguém pesquisa o teu serviço em Luanda, Huambo ou qualquer cidade.",
+		tags: ["SEO Local", "E-commerce", "Performance"],
+		href: "/servicos/sites-profissionais"
+	}
+];
+
+const projects = [
+	{
+		number: "001",
+		name: "PharmaScan",
+		description: "Plataforma B2B2C multi-tenant para farmácias · Angola & Mercados Emergentes",
+		stack: ["Django", "Flutter", "Astro"],
+		year: "2025"
+	},
+	{
+		number: "002",
+		name: "CurioMundo Africa",
+		description: "Blog de conteúdo bilíngue (PT/FR) · SEO programático · Escala via IA",
+		stack: ["Astro", "SEO", "Markdown"],
+		year: "2024"
+	},
+	{
+		number: "003",
+		name: "AngOraculum",
+		description: "Sistema de análise preditiva para desporto · Arquitectura de alta performance",
+		stack: ["Python", "API", "React"],
+		year: "2024"
+	}
+];
+---
+
+<BaseLayout title="Bruno · Engenheiro de Software · Huambo, Angola">
+	<main>
+		<!-- HERO -->
+		<section id="hero" class="min-h-screen grid grid-cols-1 md:grid-cols-2 border-b border-[var(--border)] relative overflow-hidden">
+			<div class="hero-left flex flex-col justify-end p-6 md:p-12 md:border-r border-[var(--border)] pt-32 md:pt-12">
+				<p class="hero-tag font-mono text-[0.68rem] tracking-[0.2em] uppercase text-[var(--accent)] mb-8 flex items-center gap-3 before:content-[''] before:block before:w-8 before:h-[1px] before:bg-[var(--accent)]">
+					Engenheiro de Software · Angola
+				</p>
+				<h1 class="hero-headline font-serif text-[clamp(2.5rem,6vw,5rem)] font-black leading-tight tracking-tight mb-8">
+					O Teu Negócio em Angola Precisa de Software que <br/>
+					<em class="italic text-[var(--accent2)]">Funcione Sem Internet</em>
+				</h1>
+				<p class="hero-sub text-[1rem] leading-[1.7] text-[var(--muted)] max-w-[45ch] mb-12">
+					Desenvolvo apps mobile que funcionam sem internet, sistemas de gestão para PMEs e plataformas SaaS — prontos para as condições reais de Angola. Baseado em Huambo, disponível para todo o país e para clientes internacionais.
+				</p>
+				<a href="#contacto" class="hero-cta inline-flex items-center gap-4 bg-[var(--ink)] text-[var(--paper)] font-mono text-[0.72rem] tracking-[0.12em] uppercase px-8 py-4 no-underline border border-[var(--ink)] transition-all duration-300 hover:bg-transparent hover:text-[var(--ink)] w-fit group">
+					Solicitar Orçamento
+					<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="transition-transform duration-300 group-hover:translate-x-1">
+						<path d="M5 12h14M12 5l7 7-7 7"/>
+					</svg>
+				</a>
+			</div>
+			<div class="hero-right flex flex-col justify-between p-6 md:p-12 pt-12 md:pt-12 relative">
+				<div class="hero-location font-mono text-[0.65rem] tracking-[0.12em] uppercase text-[var(--muted)] flex items-center gap-2">
+					<span class="location-dot w-[6px] h-[6px] bg-[var(--accent2)] rounded-full animate-pulse"></span>
+					Huambo, Angola · Disponível Remotamente
+				</div>
+				<div class="hero-number hidden md:block font-serif text-[clamp(7rem,14vw,13rem)] font-black text-transparent stroke-text leading-none absolute top-20 right-8 select-none pointer-events-none">
+					03
+				</div>
+				<div class="hero-stats flex flex-col gap-8 mt-auto">
+					<div class="stat-item border-t border-[var(--border)] pt-5 fade-up">
+						<div class="stat-value font-serif text-[2.4rem] font-bold text-[var(--ink)]">3+</div>
+						<div class="stat-label font-mono text-[0.65rem] tracking-[0.15em] uppercase text-[var(--muted)] mt-1">Anos de Experiência</div>
+					</div>
+					<div class="stat-item border-t border-[var(--border)] pt-5 fade-up">
+						<div class="stat-value font-serif text-[2.4rem] font-bold text-[var(--ink)]">B2B</div>
+						<div class="stat-label font-mono text-[0.65rem] tracking-[0.15em] uppercase text-[var(--muted)] mt-1">Foco em Produtos Empresariais</div>
+					</div>
+					<div class="stat-item border-t border-[var(--border)] pt-5 fade-up">
+						<div class="stat-value font-serif text-[2.4rem] font-bold text-[var(--ink)]">∞</div>
+						<div class="stat-label font-mono text-[0.65rem] tracking-[0.15em] uppercase text-[var(--muted)] mt-1">Escalabilidade por Design</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- MARQUEE -->
+		<Marquee items={techStack} />
+
+		<!-- SERVICES -->
+		<section id="servicos" class="py-28 px-6 md:px-12 border-b border-[var(--border)]">
+			<p class="section-label font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--accent)] mb-12 flex items-center gap-4 after:content-[''] after:flex-1 after:h-[1px] after:bg-[var(--border)] after:max-w-[6rem]">
+				O Que Faço
+			</p>
+			<div class="services-header grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 items-end fade-up">
+				<h2 class="services-title font-serif text-[clamp(2.5rem,4vw,3.8rem)] font-bold leading-[1.1]">Disciplinas<br/>Técnicas</h2>
+				<p class="services-desc text-[0.95rem] leading-[1.8] text-[var(--muted)] max-w-[42ch]">Não sou apenas um programador — sou um arquitecto de produtos. Cada linha de código existe para resolver um problema de negócio real.</p>
+			</div>
+			<div class="services-grid grid grid-cols-1 md:grid-cols-3 border border-[var(--border)]">
+				{services.map((service) => (
+					<ServiceCard {...service} />
+				))}
+			</div>
+		</section>
+
+		<!-- PROJECTS -->
+		<section id="projectos" class="py-28 px-6 md:px-12 border-b border-[var(--border)]">
+			<div class="projects-header flex flex-col md:flex-row items-baseline md:items-end justify-between mb-16 gap-6 fade-up">
+				<h2 class="projects-title font-serif text-[clamp(2.5rem,4vw,3.8rem)] font-bold leading-[1.1]">Projectos<br/>Seleccionados</h2>
+				<a href="https://github.com/brunocorreia" target="_blank" rel="noopener" class="view-all font-mono text-[0.68rem] tracking-[0.12em] uppercase text-[var(--muted)] no-underline flex items-center gap-2 hover:text-[var(--ink)] transition-colors">
+					Ver GitHub
+					<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+						<path d="M7 17L17 7M17 7H7M17 7v10"/>
+					</svg>
+				</a>
+			</div>
+			<div class="project-list border-t border-[var(--border)]">
+				{projects.map((project) => (
+					<ProjectRow {...project} />
+				))}
+			</div>
+		</section>
+
+		<!-- ABOUT -->
+		<section id="sobre" class="py-28 px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-24 items-center border-b border-[var(--border)]">
+			<div class="about-visual relative h-[480px]">
+				<div class="about-card-main absolute inset-0 bg-[var(--ink)] text-[var(--paper)] p-10 flex flex-col justify-between">
+					<div class="about-initials font-serif text-[5rem] font-black leading-none text-[var(--accent)]">B.</div>
+					<div>
+						<div class="about-role font-mono text-[0.65rem] tracking-[0.15em] uppercase opacity-50">Software Engineer</div>
+						<div class="font-sans text-[0.85rem] opacity-50 mt-1">Huambo · Angola</div>
+					</div>
+				</div>
+				<div class="about-card-float absolute w-[55%] bottom-[-2rem] right-[-2rem] bg-[var(--accent2)] text-[var(--paper)] p-10 z-[2]">
+					<div class="float-label font-mono text-[0.65rem] tracking-[0.12em] uppercase opacity-70 mb-2">Especialidade</div>
+					<div class="float-value font-serif text-[1.8rem] font-bold">SaaS &amp; Plataformas B2B</div>
+				</div>
+			</div>
+			<div class="about-content fade-up">
+				<p class="section-label font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--accent)] mb-12 flex items-center gap-4 after:content-[''] after:flex-1 after:h-[1px] after:bg-[var(--border)] after:max-w-[6rem]">
+					Sobre
+				</p>
+				<h2 class="about-heading font-serif text-[clamp(2rem,3vw,3rem)] font-bold leading-[1.15] mb-6">Engenheiro de Software com<br/>Formação em Economia</h2>
+				<p class="about-text text-[0.95rem] leading-[1.85] text-[var(--muted)] mb-8">
+					Estudante de Economia na U.J.E.S (Huambo) — o que me separa da maioria dos programadores é que entendo o lado do negócio. Não construo apenas código; construo sistemas que reduzem custos, automatizam tarefas repetitivas e geram retorno real.
+				</p>
+				<p class="about-text text-[0.95rem] leading-[1.85] text-[var(--muted)] mb-10">
+					Actualmente a liderar o desenvolvimento do PharmaScan — a primeira plataforma multi-tenant para farmácias angolanas. Sabias que a digitalização pode permitir um salto de produtividade de até 25% nas PMEs? Eu resolvo isso.
+				</p>
+				<div class="about-skills flex flex-wrap gap-2 mb-10">
+					{["Django REST", "Flutter", "PostgreSQL", "Astro", "Python", "Tailwind CSS", "Git / GitHub", "SEO Técnico"].map((skill) => (
+						<span class="skill-pill font-mono text-[0.65rem] tracking-[0.08em] uppercase border border-[var(--border)] px-[0.9rem] py-[0.4rem] transition-all duration-200 hover:bg-[var(--ink)] hover:text-[var(--paper)] hover:border-[var(--ink)]">
+							{skill}
+						</span>
+					))}
+				</div>
+				<a href="#contacto" class="hero-cta inline-flex items-center gap-4 bg-[var(--ink)] text-[var(--paper)] font-mono text-[0.72rem] tracking-[0.12em] uppercase px-8 py-4 no-underline border border-[var(--ink)] transition-all duration-300 hover:bg-transparent hover:text-[var(--ink)] w-fit group">
+					Vamos Trabalhar Juntos
+					<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="transition-transform duration-300 group-hover:translate-x-1">
+						<path d="M5 12h14M12 5l7 7-7 7"/>
+					</svg>
+				</a>
+			</div>
+		</section>
+
+		<!-- CONTACT -->
+		<section id="contacto" class="bg-[var(--ink)] text-[var(--paper)] grid grid-cols-1 md:grid-cols-2 gap-24 p-6 md:p-32">
+			<div>
+				<p class="section-label font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--accent)] mb-12 flex items-center gap-4 after:content-[''] after:flex-1 after:h-[1px] after:bg-[rgba(244,240,232,0.15)] after:max-w-[6rem]">
+					Contacto
+				</p>
+				<h2 class="contact-heading font-serif text-[clamp(2.5rem,4vw,4rem)] font-black leading-[1.05] mb-6">Vamos<br/><em class="italic text-[var(--accent)]">Construir</em><br/>Juntos.</h2>
+				<p class="contact-sub text-[0.95rem] leading-[1.8] text-[rgba(244,240,232,0.55)] mb-8 max-w-[38ch]">Disponível para projectos freelance, consultoria técnica e parcerias. Resposta em 24–48h.</p>
+				<p class="font-mono text-[0.7rem] tracking-widest uppercase text-[var(--accent)] mb-12">
+					Resposta garantida em 24 horas úteis.<br/>
+					Primeira consulta gratuita.
+				</p>
+				<div class="contact-info flex flex-col gap-4">
+					<div class="contact-info-item flex items-center gap-4 font-mono text-[0.78rem] tracking-[0.08em] text-[rgba(244,240,232,0.6)]">
+						<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="text-[var(--accent)]"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+						Huambo, Angola · Disponível Remotamente
+					</div>
+					<div class="contact-info-item flex items-center gap-4 font-mono text-[0.78rem] tracking-[0.08em] text-[rgba(244,240,232,0.6)]">
+						<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="text-[var(--accent)]"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+						ola@brunocorreia.dev
+					</div>
+				</div>
+			</div>
+
+			<form action="https://formspree.io/f/mnjoawgn" method="POST" class="flex flex-col gap-5">
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+					<div class="flex flex-col gap-2">
+						<label class="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-[rgba(244,240,232,0.4)]" for="nome">Nome</label>
+						<input class="bg-[rgba(244,240,232,0.06)] border border-[rgba(244,240,232,0.12)] text-[var(--paper)] font-sans text-[0.9rem] p-4 outline-none focus:border-[var(--accent)] transition-colors" type="text" id="nome" name="nome" placeholder="O teu nome" required />
+					</div>
+					<div class="flex flex-col gap-2">
+						<label class="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-[rgba(244,240,232,0.4)]" for="email">Email</label>
+						<input class="bg-[rgba(244,240,232,0.06)] border border-[rgba(244,240,232,0.12)] text-[var(--paper)] font-sans text-[0.9rem] p-4 outline-none focus:border-[var(--accent)] transition-colors" type="email" id="email" name="email" placeholder="email@empresa.com" required />
+					</div>
+				</div>
+				<div class="flex flex-col gap-2">
+					<label class="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-[rgba(244,240,232,0.4)]" for="empresa">Empresa / Projecto</label>
+					<input class="bg-[rgba(244,240,232,0.06)] border border-[rgba(244,240,232,0.12)] text-[var(--paper)] font-sans text-[0.9rem] p-4 outline-none focus:border-[var(--accent)] transition-colors" type="text" id="empresa" name="empresa" placeholder="Nome da empresa ou projecto" />
+				</div>
+				<div class="flex flex-col gap-2">
+					<label class="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-[rgba(244,240,232,0.4)]" for="mensagem">Descreve o Projecto</label>
+					<textarea class="bg-[rgba(244,240,232,0.06)] border border-[rgba(244,240,232,0.12)] text-[var(--paper)] font-sans text-[0.9rem] p-4 outline-none focus:border-[var(--accent)] transition-colors min-h-[120px] resize-none" id="mensagem" name="mensagem" placeholder="O que precisas de construir? Qual é o prazo?" required></textarea>
+				</div>
+				<button type="submit" class="submit-btn bg-[var(--accent)] text-[var(--ink)] font-mono text-[0.72rem] tracking-[0.12em] uppercase py-4 px-8 cursor-pointer transition-all duration-300 hover:bg-[var(--paper)] mt-2">
+					Enviar Pedido
+				</button>
+			</form>
+		</section>
+	</main>
+</BaseLayout>
+
+<style>
+	.stroke-text {
+		-webkit-text-stroke: 1px rgba(10,10,10,0.12);
+	}
+</style>

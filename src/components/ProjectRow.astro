@@ -1,0 +1,34 @@
+---
+interface Props {
+    number: string;
+    name: string;
+    description: string;
+    stack: string[];
+    year: string;
+    href?: string;
+}
+const { number, name, description, stack, year, href = "#" } = Astro.props;
+---
+<a href={href} class="project-row grid grid-cols-[4rem_1fr_auto_auto] items-center gap-8 py-8 border-b border-[var(--border)] no-underline text-inherit transition-all duration-300 hover:pl-4 fade-up group">
+    <span class="proj-num font-mono text-[0.7rem] text-[var(--muted)] transition-colors duration-300 group-hover:text-[var(--accent)]">
+        {number}
+    </span>
+    <div class="proj-info">
+        <div class="proj-name font-serif text-[1.5rem] font-bold mb-[0.3rem]">
+            {name}
+        </div>
+        <div class="proj-desc text-[0.85rem] text-[var(--muted)]">
+            {description}
+        </div>
+    </div>
+    <div class="proj-stack hidden md:flex gap-[0.4rem] flex-wrap justify-end">
+        {stack.map((item: string) => (
+            <span class="font-mono text-[0.6rem] tracking-[0.06em] uppercase bg-[rgba(10,10,10,0.06)] px-[0.7rem] py-[0.3rem]">
+                {item}
+            </span>
+        ))}
+    </div>
+    <span class="proj-year hidden md:block font-mono text-[0.7rem] text-[var(--muted)]">
+        {year}
+    </span>
+</a>

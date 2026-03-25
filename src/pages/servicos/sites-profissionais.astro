@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+	title="Criação de Sites e Lojas Online em Angola · SEO Local Huambo"
+	description="Tenha um site profissional que gera clientes. Especialista em SEO e performance para o mercado angolano. Sites rápidos que aparecem no topo do Google."
+>
+	<main class="pt-40 pb-20 px-6 md:px-12">
+		<div class="max-w-4xl mx-auto">
+			<nav class="flex items-center gap-4 mb-12">
+				<a href="/" class="font-mono text-[0.65rem] tracking-[0.12em] uppercase text-[var(--muted)] no-underline hover:text-[var(--ink)] transition-colors">Início</a>
+				<span class="w-4 h-[1px] bg-[var(--border)]"></span>
+				<span class="font-mono text-[0.65rem] tracking-[0.12em] uppercase text-[var(--accent)]">Serviços</span>
+			</nav>
+
+			<h1 class="font-serif text-[clamp(2.5rem,5vw,4.5rem)] font-black leading-[1.1] mb-12">
+				Sites que Vendem <br/>
+				<em class="italic text-[var(--accent)]">Enquanto Tu Dormes</em>.
+			</h1>
+
+			<div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-16 mb-24">
+				<div class="prose prose-premium">
+					<p class="text-[1.2rem] leading-[1.8] mb-8">
+						Um site bonito é apenas o começo. Um site **útil** é aquele que os teus clientes encontram quando pesquisam pelo que vendes no Google.
+					</p>
+					<p>
+						Utilizo o **Astro**, a tecnologia mais moderna para sites ultra-rápidos. Porquê? Porque a velocidade é o que dita se o teu cliente fica no site ou desiste devido à internet lenta em Angola. Além disso, foco 100% em **SEO Local** para as cidades angolanas, garantindo autoridade máxima nos resultados de busca.
+					</p>
+					
+					<h2 class="mt-16">Estratégia de Performance:</h2>
+					<ul class="space-y-4 list-none p-0">
+						<li class="flex items-start gap-4">
+							<span class="text-[var(--accent)] font-bold">✓</span>
+							<span><strong>SEO Programático:</strong> Estrutura interna desenhada para algoritmos modernos.</span>
+						</li>
+						<li class="flex items-start gap-4">
+							<span class="text-[var(--accent)] font-bold">✓</span>
+							<span><strong>Otimização de Conversão:</strong> Foco em levar o visitante para o teu WhatsApp.</span>
+						</li>
+						<li class="flex items-start gap-4">
+							<span class="text-[var(--accent)] font-bold">✓</span>
+							<span><strong>Design Mobile-First:</strong> O teu site vai brilhar em qualquer ecrã de telemóvel.</span>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="bg-[var(--paper)] text-[var(--ink)] border border-[var(--border)] p-10 flex flex-col justify-between h-fit sticky top-32">
+					<div>
+						<h3 class="font-serif text-[1.8rem] italic mb-6">Queres dominar o Google?</h3>
+						<p class="text-[0.9rem] text-[var(--muted)] mb-10">Não deixes o teu concorrente chegar primeiro. Vamos subir o nível da tua presença digital hoje.</p>
+					</div>
+					<a href="/#contacto" class="font-mono text-[0.72rem] tracking-[0.12em] uppercase bg-[var(--ink)] text-[var(--paper)] px-8 py-4 no-underline text-center hover:bg-[var(--accent)] hover:text-[var(--ink)] transition-all duration-300">
+						Ver Planos
+					</a>
+				</div>
+			</div>
+
+			<section class="border-t border-[var(--border)] pt-20">
+				<h2 class="font-serif text-[2.5rem] font-bold mb-12">Tecnologias Web</h2>
+				<div class="flex flex-wrap gap-4">
+					{["Astro", "Tailwind CSS", "JavaScript ES6", "Cloudflare", "PageSpeed Pro"].map(tech => (
+						<span class="font-mono text-[0.65rem] tracking-[0.1em] uppercase border border-[var(--border)] px-6 py-3">
+							{tech}
+						</span>
+					))}
+				</div>
+			</section>
+		</div>
+	</main>
+</BaseLayout>

@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title="Notas Técnicas · Bruno Correia">
+	<main class="pt-32 pb-20 px-6 md:px-12">
+		<div class="max-w-4xl mx-auto">
+			<p class="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--accent)] mb-12 flex items-center gap-4 after:content-[''] after:flex-1 after:h-[1px] after:bg-[var(--border)] after:max-w-[6rem]">
+				Editorial
+			</p>
+			<h1 class="font-serif text-[3.5rem] font-bold mb-16 leading-tight">Notas sobre<br/>Engenharia &amp;<br/><em class="italic text-[var(--accent2)]">Arquitectura</em></h1>
+			
+			<div class="space-y-20">
+				{posts.map((post) => (
+					<article class="group fade-up">
+						<a href={`/blog/${post.slug}/`} class="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-12 items-center no-underline text-inherit group">
+							<div class="aspect-[16/9] bg-[var(--ink)] overflow-hidden border border-[var(--border)] relative">
+								<div class="absolute inset-0 bg-[var(--accent)] opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+								{post.data.heroImage && (
+									<img src={post.data.heroImage} alt={post.data.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+								)}
+							</div>
+							<div>
+								<div class="flex items-center gap-4 mb-4">
+									<span class="font-mono text-[0.6rem] tracking-[0.1em] uppercase text-[var(--accent)]">
+										{post.data.pubDate.toLocaleDateString('pt', { year: 'numeric', month: 'long', day: 'numeric' })}
+									</span>
+									<span class="w-8 h-[1px] bg-[var(--border)]"></span>
+								</div>
+								<h2 class="font-serif text-[1.8rem] font-bold mb-4 leading-tight group-hover:text-[var(--accent)] transition-colors duration-300">{post.data.title}</h2>
+								<p class="text-[0.9rem] leading-[1.8] text-[var(--muted)] mb-6">
+									{post.data.description}
+								</p>
+								<div class="font-mono text-[0.68rem] tracking-[0.12em] uppercase flex items-center gap-2 group-hover:gap-4 transition-all duration-300">
+									Ler Artigo 
+									<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+										<path d="M5 12h14M12 5l7 7-7 7"/>
+									</svg>
+								</div>
+							</div>
+						</a>
+					</article>
+				))}
+			</div>
+		</div>
+	</main>
+</BaseLayout>

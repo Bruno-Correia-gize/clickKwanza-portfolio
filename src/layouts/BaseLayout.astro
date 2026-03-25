@@ -1,0 +1,261 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Engenheiro de Software & Consultor de Eficiência Operacional em Angola. Especialista em Sistemas Escaláveis e Viabilidade Económica." } = Astro.props;
+
+import { ViewTransitions } from 'astro:transitions';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://brunocorreia.dev/#service",
+      "name": "Bruno Correia · Software Architecture & Economics",
+      "image": "https://brunocorreia.dev/og-image.png",
+      "url": "https://brunocorreia.dev",
+      "telephone": "+244931820099",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Huambo",
+        "addressLocality": "Huambo",
+        "addressRegion": "Huambo",
+        "addressCountry": "AO"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -12.7761,
+        "longitude": 15.7392
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://brunocorreia.dev/#person",
+      "name": "Bruno Correia",
+      "jobTitle": "Software Engineer & Economist",
+      "url": "https://brunocorreia.dev",
+      "sameAs": [
+        "https://github.com/brunocorreia",
+        "https://linkedin.com/in/brunocorreia"
+      ],
+      "worksFor": { "@id": "https://brunocorreia.dev/#service" }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Serviços de Engenharia de Software em Angola",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Sistemas de Gestão para Empresas (ERP/CRM)",
+          "description": "Desenvolvimento de software à medida para digitalização de processos em Angola."
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Aplicações Mobile Offline-First",
+          "description": "Apps Android e iOS que funcionam sem ligação estável à internet."
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "SEO & Lojas Online de Alta Performance",
+          "description": "Estratégias de rankeamento e e-commerce para o mercado angolano."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quanto custa criar um site profissional em Angola?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O custo depende da complexidade, variando entre soluções para PMEs e sistemas à medida. Ofereço uma primeira consulta gratuita para orçamentação."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Desenvolve sistemas que funcionam sem internet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, sou especialista em arquiteturas Offline-First, ideais para zonas de Angola com conectividade instável."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="pt" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content="programador web Angola, desenvolvimento de software Luanda, criar aplicação mobile Angola, sistema de gestão para empresas angolanas, site profissional Angola, programador freelancer Huambo, software Django Angola, app Flutter Angola, bruno correia" />
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+		<meta name="author" content="Bruno Correia" />
+		
+		<!-- Geo Tags for Local SEO -->
+		<meta name="geo.region" content="AO-HUA" />
+		<meta name="geo.placename" content="Huambo" />
+		<meta name="geo.position" content="-12.776111;15.739167" />
+		<meta name="ICBM" content="-12.776111, 15.739167" />
+
+		<!-- Performance: DNS Prefetch & Preconnect -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+		
+		<!-- Performance: Font Preload (Critical Fonts Only) -->
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" as="style" />
+		
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/og-image.png" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content="/og-image.png" />
+
+		<ViewTransitions />
+
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="bg-[var(--paper)] text-[var(--ink)] font-sans font-light overflow-x-hidden selection:bg-[var(--accent)] selection:text-[var(--ink)]">
+		
+		<!-- Noise Overlay -->
+		<div class="fixed inset-0 pointer-events-none opacity-40 z-[9999] bg-noise"></div>
+
+		<nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 md:px-12 py-6 transition-all duration-400 border-b border-transparent">
+			<a href="/" class="font-mono text-[0.78rem] tracking-[0.15em] uppercase text-[var(--ink)] no-underline">
+				Bruno · Dev
+			</a>
+			<ul class="hidden md:flex gap-10 list-none">
+				<li><a href="/#servicos" class="font-mono text-[0.72rem] tracking-[0.1em] uppercase text-[var(--muted)] no-underline hover:text-[var(--ink)] transition-colors">Serviços</a></li>
+				<li><a href="/#projectos" class="font-mono text-[0.72rem] tracking-[0.1em] uppercase text-[var(--muted)] no-underline hover:text-[var(--ink)] transition-colors">Projectos</a></li>
+				<li><a href="/#sobre" class="font-mono text-[0.72rem] tracking-[0.1em] uppercase text-[var(--muted)] no-underline hover:text-[var(--ink)] transition-colors">Sobre</a></li>
+				<li><a href="/#contacto" class="font-mono text-[0.72rem] tracking-[0.1em] uppercase text-[var(--muted)] no-underline hover:text-[var(--ink)] transition-colors">Contacto</a></li>
+				<li><a href="/blog" class="font-mono text-[0.72rem] tracking-[0.1em] uppercase text-[var(--muted)] no-underline hover:text-[var(--ink)] transition-colors">Blog</a></li>
+			</ul>
+		</nav>
+
+		<slot />
+
+		<footer class="bg-[var(--ink)] text-[var(--paper)] px-6 md:px-12 py-8 flex flex-col md:flex-row items-center justify-between border-t border-[rgba(244,240,232,0.08)] opacity-35">
+			<span class="font-mono text-[0.62rem] tracking-[0.1em] uppercase">© {new Date().getFullYear()} Bruno · Engenheiro de Software em Angola</span>
+			<div class="flex gap-8 mt-4 md:mt-0">
+				<a href="https://github.com/brunocorreia" target="_blank" rel="noopener" class="font-mono text-[0.62rem] tracking-[0.1em] uppercase no-underline text-inherit hover:text-[var(--accent)] transition-colors">GitHub</a>
+				<a href="https://linkedin.com/" target="_blank" rel="noopener" class="font-mono text-[0.62rem] tracking-[0.1em] uppercase no-underline text-inherit hover:text-[var(--accent)] transition-colors">LinkedIn</a>
+				<a href="/#contacto" class="font-mono text-[0.62rem] tracking-[0.1em] uppercase no-underline text-inherit hover:text-[var(--accent)] transition-colors">Contacto</a>
+			</div>
+		</footer>
+
+		<script>
+			// Navbar scroll effect
+			const navbar = document.getElementById('navbar');
+			window.addEventListener('scroll', () => {
+				if (navbar) {
+					navbar.classList.toggle('bg-[rgba(244,240,232,0.92)]', window.scrollY > 40);
+					navbar.classList.toggle('backdrop-blur-md', window.scrollY > 40);
+					navbar.classList.toggle('border-[var(--border)]', window.scrollY > 40);
+					navbar.classList.toggle('py-4', window.scrollY > 40);
+				}
+			});
+
+			// Scroll-triggered fade-in
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry, i) => {
+					if (entry.isIntersecting) {
+						setTimeout(() => entry.target.classList.add('visible'), i * 80);
+						observer.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+			document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+			// Smooth anchor scroll
+			document.querySelectorAll('a[href^="#"]').forEach(a => {
+				a.addEventListener('click', e => {
+					const href = a.getAttribute('href');
+					if (href && href.startsWith('#')) {
+						const target = document.querySelector(href);
+						if (target) {
+							e.preventDefault();
+							target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+						}
+					}
+				});
+			});
+		</script>
+		<WhatsAppCTA />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--ink: #0a0a0a;
+		--paper: #f4f0e8;
+		--accent: #c8a96e;
+		--accent2: #3d6b5e;
+		--muted: #6b6560;
+		--border: rgba(10,10,10,0.12);
+		--serif: 'Playfair Display', Georgia, serif;
+		--mono: 'Space Mono', monospace;
+		--sans: 'DM Sans', sans-serif;
+	}
+
+	.bg-noise {
+		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+	}
+
+	::-webkit-scrollbar { width: 3px; }
+	::-webkit-scrollbar-track { background: var(--paper); }
+	::-webkit-scrollbar-thumb { background: var(--accent); }
+
+	.fade-up {
+		opacity: 0;
+		transform: translateY(30px);
+		transition: opacity 0.7s ease, transform 0.7s ease;
+	}
+	.fade-up.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.prose {
+		max-width: 65ch;
+		margin-left: auto;
+		margin-right: auto;
+	}
+</style>

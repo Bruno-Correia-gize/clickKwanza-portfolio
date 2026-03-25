@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+	title="Desenvolvimento de Aplicações Mobile em Angola · Offline-First"
+	description="Crie a aplicação Android ou iOS para o seu negócio. Especialista em apps Flutter que funcionam sem internet estável em Angola. Performance e resiliência."
+>
+	<main class="pt-40 pb-20 px-6 md:px-12">
+		<div class="max-w-4xl mx-auto">
+			<nav class="flex items-center gap-4 mb-12">
+				<a href="/" class="font-mono text-[0.65rem] tracking-[0.12em] uppercase text-[var(--muted)] no-underline hover:text-[var(--ink)] transition-colors">Início</a>
+				<span class="w-4 h-[1px] bg-[var(--border)]"></span>
+				<span class="font-mono text-[0.65rem] tracking-[0.12em] uppercase text-[var(--accent)]">Serviços</span>
+			</nav>
+
+			<h1 class="font-serif text-[clamp(2.5rem,5vw,4.5rem)] font-black leading-[1.1] mb-12">
+				Aplicações Mobile <br/>
+				<em class="italic text-[var(--accent2)]">Nativas e Resilientes</em>.
+			</h1>
+
+			<div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-16 mb-24">
+				<div class="prose prose-premium">
+					<p class="text-[1.2rem] leading-[1.8] mb-8">
+						Em Angola, o smartphone é a principal porta de entrada para a internet. Mas o software precisa de respeitar a realidade: redes instáveis e planos de dados limitados.
+					</p>
+					<p>
+						Desenvolvo apps usando **Flutter**, garantindo que o teu produto funcione em Android e iOS com um único código, mantendo a performance fluida. O meu diferencial? Implemento arquitecturas **Offline-First** — os teus utilizadores continuam a trabalhar mesmo sem sinal, e os dados sincronizam automaticamente quando a rede volta.
+					</p>
+					
+					<h2 class="mt-16">Vantagens Técnicas:</h2>
+					<ul class="space-y-4 list-none p-0">
+						<li class="flex items-start gap-4">
+							<span class="text-[var(--accent2)] font-bold">✓</span>
+							<span><strong>Sincronização Atómica:</strong> Nunca percas dados por falha de ligação.</span>
+						</li>
+						<li class="flex items-start gap-4">
+							<span class="text-[var(--accent2)] font-bold">✓</span>
+							<span><strong>Interface Premium:</strong> Design intuitivo que segue as melhores práticas da Google e Apple.</span>
+						</li>
+						<li class="flex items-start gap-4">
+							<span class="text-[var(--accent2)] font-bold">✓</span>
+							<span><strong>Baixo Consumo de Dados:</strong> Optimização rigorosa para poupar o saldo dos utilizadores.</span>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="bg-[var(--accent2)] text-[var(--paper)] p-10 flex flex-col justify-between h-fit sticky top-32">
+					<div>
+						<h3 class="font-serif text-[1.8rem] italic mb-6">Tens uma ideia?</h3>
+						<p class="text-[0.9rem] opacity-70 mb-10">Vamos transformar a tua visão numa aplicação real que os angolanos vão adorar usar.</p>
+					</div>
+					<a href="/#contacto" class="font-mono text-[0.72rem] tracking-[0.12em] uppercase bg-[var(--ink)] text-[var(--paper)] px-8 py-4 no-underline text-center hover:bg-[var(--paper)] hover:text-[var(--ink)] transition-all duration-300">
+						Falar Projecto
+					</a>
+				</div>
+			</div>
+
+			<section class="border-t border-[var(--border)] pt-20">
+				<h2 class="font-serif text-[2.5rem] font-bold mb-12">Stack Mobile</h2>
+				<div class="flex flex-wrap gap-4">
+					{["Flutter", "Dart", "Firebase", "Local Storage", "SQLite"].map(tech => (
+						<span class="font-mono text-[0.65rem] tracking-[0.1em] uppercase border border-[var(--border)] px-6 py-3">
+							{tech}
+						</span>
+					))}
+				</div>
+			</section>
+		</div>
+	</main>
+</BaseLayout>

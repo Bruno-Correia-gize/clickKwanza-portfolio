@@ -1,0 +1,37 @@
+---
+interface Props {
+    number: string;
+    name: string;
+    description: string;
+    tags: string[];
+    href?: string;
+}
+const { number, name, description, tags, href = "#" } = Astro.props;
+---
+<a href={href} class="service-card p-10 border-r border-[var(--border)] last:border-r-0 relative overflow-hidden transition-colors duration-300 hover:bg-[var(--ink)] group fade-up no-underline">
+    <div class="service-num font-serif text-[4rem] font-black leading-none mb-8 text-transparent stroke-text transition-colors duration-300 group-hover:stroke-text-light">
+        {number}
+    </div>
+    <h3 class="service-name font-serif text-[1.4rem] font-bold mb-4 transition-colors duration-300 group-hover:text-[var(--paper)]">
+        {name}
+    </h3>
+    <p class="service-desc text-[0.88rem] leading-[1.7] text-[var(--muted)] mb-6 transition-colors duration-300 group-hover:text-[var(--paper)]">
+        {description}
+    </p>
+    <div class="service-tags flex flex-wrap gap-[0.4rem]">
+        {tags.map((tag: string) => (
+            <span class="font-mono text-[0.6rem] tracking-[0.08em] uppercase border border-[var(--border)] px-[0.6rem] py-[0.25rem] text-[var(--muted)] transition-all duration-300 group-hover:bg-[rgba(244,240,232,0.08)] group-hover:text-[var(--paper)] group-hover:border-[rgba(244,240,232,0.2)]">
+                {tag}
+            </span>
+        ))}
+    </div>
+</a>
+
+<style>
+    .stroke-text {
+        -webkit-text-stroke: 1px rgba(10,10,10,0.1);
+    }
+    .group:hover .stroke-text-light {
+        -webkit-text-stroke: 1px rgba(244,240,232,0.15);
+    }
+</style>

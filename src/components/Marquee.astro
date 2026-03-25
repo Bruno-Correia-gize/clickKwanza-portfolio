@@ -1,0 +1,28 @@
+---
+const { items } = Astro.props;
+---
+<div class="marquee-section bg-[var(--ink)] overflow-hidden py-4" aria-hidden="true">
+    <div class="marquee-track flex whitespace-nowrap animate-marquee">
+        <!-- Replicated for seamless loop -->
+        {[1, 2].map(() => (
+            <>
+                {items.map((item: string) => (
+                    <span class="marquee-item inline-flex items-center gap-8 px-8 font-mono text-[0.7rem] tracking-[0.15em] uppercase text-[var(--paper)] opacity-60">
+                        {item}
+                        <span class="marquee-dot w-1 h-1 bg-[var(--accent)] rounded-full flex-shrink-0"></span>
+                    </span>
+                ))}
+            </>
+        ))}
+    </div>
+</div>
+
+<style>
+    @keyframes marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+        animation: marquee 22s linear infinite;
+    }
+</style>

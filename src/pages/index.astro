@@ -3,6 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Marquee from '../components/Marquee.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import ProjectRow from '../components/ProjectRow.astro';
+import { getCollection } from 'astro:content';
+
+const latestPosts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
 
 const techStack = [
 	"Django", "Flutter", "Python", "Astro", "PostgreSQL", 
@@ -141,6 +146,35 @@ const projects = [
 			<div class="project-list border-t border-[var(--border)]">
 				{projects.map((project) => (
 					<ProjectRow {...project} />
+				))}
+			</div>
+		</section>
+
+		<!-- LATEST POSTS -->
+		<section id="blog-preview" class="py-28 px-6 md:px-12 border-b border-[var(--border)] bg-black/5">
+			<div class="flex flex-col md:flex-row items-baseline md:items-end justify-between mb-16 gap-6 fade-up">
+				<h2 class="font-serif text-[clamp(2.5rem,4vw,3.8rem)] font-bold leading-[1.1]">Notas<br/>Técnicas</h2>
+				<a href="/blog" class="font-mono text-[0.68rem] tracking-[0.12em] uppercase text-[var(--muted)] no-underline flex items-center gap-2 hover:text-[var(--ink)] transition-colors">
+					Ver Blog Completo
+					<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+						<path d="M7 17L17 7M17 7H7M17 7v10"/>
+					</svg>
+				</a>
+			</div>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+				{latestPosts.map((post) => (
+					<a href={`/blog/${post.slug}/`} class="group no-underline text-inherit fade-up">
+						<div class="aspect-[16/9] bg-black/10 border border-[var(--border)] mb-6 overflow-hidden relative">
+							<div class="absolute inset-0 bg-[var(--accent)] opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+							{post.data.heroImage && <img src={post.data.heroImage} alt={post.data.title} class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />}
+						</div>
+						<div class="flex items-center gap-3 mb-3">
+							<span class="font-mono text-[0.6rem] tracking-[0.1em] uppercase text-[var(--accent)]">{post.data.pubDate.toLocaleDateString('pt', { month: 'short', day: 'numeric' })}</span>
+							<span class="w-6 h-[1px] bg-[var(--border)]"></span>
+						</div>
+						<h3 class="font-serif text-[1.4rem] font-bold mb-3 group-hover:text-[var(--accent)] transition-colors line-clamp-2">{post.data.title}</h3>
+						<p class="text-[0.85rem] text-[var(--muted)] leading-relaxed line-clamp-2">{post.data.description}</p>
+					</a>
 				))}
 			</div>
 		</section>

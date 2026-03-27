@@ -1,4 +1,18 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://brunocorreia.dev/sitemap-index.xml
+# Explicitly allow AI Bots to improve discovery
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Claude-Bot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://brunocorreia.vercel.app/sitemap-index.xml

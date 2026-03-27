@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://brunocorreia.dev',
+  site: 'https://brunocorreia.vercel.app',
   integrations: [tailwind(), sitemap()],
 });
 

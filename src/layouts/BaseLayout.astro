@@ -2,9 +2,18 @@
 interface Props {
 	title: string;
 	description?: string;
+	image?: string;
+	type?: string;
+	canonical?: URL | string;
 }
 
-const { title, description = "Engenheiro de Software & Consultor de Eficiência Operacional em Angola. Especialista em Sistemas Escaláveis e Viabilidade Económica." } = Astro.props;
+const { 
+	title, 
+	description = "Engenheiro de Software & Consultor de Eficiência Operacional em Angola. Especialista em Sistemas Escaláveis e Viabilidade Económica.",
+	image = "/og-image.png",
+	type = "website",
+	canonical = new URL(Astro.url.pathname, Astro.site)
+} = Astro.props;
 
 import { ViewTransitions } from 'astro:transitions';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
@@ -114,7 +123,7 @@ const jsonLd = {
 		<meta name="description" content={description} />
 		<meta name="keywords" content="programador web Angola, desenvolvimento de software Luanda, criar aplicação mobile Angola, sistema de gestão para empresas angolanas, site profissional Angola, programador freelancer Huambo, software Django Angola, app Flutter Angola, bruno correia" />
 		<meta name="google-site-verification" content="HXKiskAEBYhKY4wdCB13tqQw88tUQpId9hGgatceLvg" />
-		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<link rel="canonical" href={canonical} />
 		<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 		<meta name="author" content="Bruno Correia" />
 		
@@ -136,18 +145,23 @@ const jsonLd = {
 		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
 		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
+		<meta property="og:type" content={type} />
 		<meta property="og:url" content={Astro.url} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content="/og-image.png" />
+		<meta property="og:image" content={new URL(image, Astro.site)} />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={Astro.url} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content="/og-image.png" />
+		<meta property="twitter:image" content={new URL(image, Astro.site)} />
+
+		<!-- RSS Feed Link -->
+		<link rel="alternate" type="application/rss+xml" title="Bruno Correia - Notas Técnicas e Artigos" href={new URL("rss.xml", Astro.site)} />
+
+		<slot name="head" />
 
 		<ViewTransitions />
 

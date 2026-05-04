@@ -15,7 +15,7 @@ const {
 	canonical = new URL(Astro.url.pathname, Astro.site)
 } = Astro.props;
 
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
 import Analytics from '@vercel/analytics/astro';
 
@@ -163,12 +163,12 @@ const jsonLd = {
 
 		<slot name="head" />
 
-		<ViewTransitions />
+		<ClientRouter />
 
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
 		<!-- Analytics: Google Analytics 4 -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-T45G9SCVVQ"></script>
+		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-T45G9SCVVQ"></script>
 		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
@@ -228,7 +228,7 @@ const jsonLd = {
 		</footer>
 
 		<script>
-			let scrollHandler;
+			let scrollHandler: (() => void) | undefined;
 
 			function initApp() {
 				const navbar = document.getElementById('navbar');
